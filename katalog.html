@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=375, initial-scale=1.0">
+<title>NUSANTARA — Katalog</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 375px;
+  min-height: 812px;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  background: #F4F9F4;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; height: 56px;
+  background: #1E4D35;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-left { display: flex; align-items: center; gap: 8px; }
+.nav-brand { font-size: 14px; font-weight: 800; letter-spacing: 0.5px; color: #fff; }
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.nav-icon {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 16px; cursor: pointer;
+}
+.toggle-pill {
+  width: 44px; height: 24px; border-radius: 99px;
+  background: #52B788;
+  display: flex; align-items: center; padding: 3px;
+  cursor: pointer; justify-content: flex-end;
+}
+.toggle-circle { width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+
+/* SEARCH BAR */
+.search-bar {
+  margin: 10px 12px;
+  border-radius: 24px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 14px; height: 42px;
+  background: #fff;
+  border: 1px solid #C8E6C9;
+}
+.search-bar i { font-size: 16px; color: #888; }
+.search-bar input {
+  background: none; border: none; outline: none;
+  font-size: 12px; flex: 1; font-family: inherit; color: #333;
+}
+.search-bar input::placeholder { color: #aaa; }
+
+/* FILTER CHIPS */
+.filter-row {
+  display: flex; gap: 8px;
+  padding: 4px 12px 10px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.filter-row::-webkit-scrollbar { display: none; }
+.fchip {
+  font-size: 11px; font-weight: 600;
+  padding: 5px 14px; border-radius: 99px;
+  border: none; cursor: pointer; white-space: nowrap;
+  background: #E0F2E9; color: #1E4D35;
+}
+.fchip.on { background: #1E4D35; color: #fff; }
+
+/* COUNT */
+.prod-count { font-size: 11px; color: #888; padding: 2px 14px 8px; }
+
+/* PRODUCT GRID */
+.prod-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 12px 80px;
+}
+.prod-card {
+  border-radius: 14px; overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  cursor: pointer;
+}
+.prod-img-area {
+  height: 100px;
+  background: #E8F5E9;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+}
+.prod-body { padding: 8px 10px 10px; }
+.prod-name { font-size: 11px; color: #222; margin-bottom: 3px; line-height: 1.3; font-weight: 500; }
+.prod-price { font-size: 13px; font-weight: 800; color: #1E4D35; }
+.prod-row { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+.prod-star { font-size: 10px; color: #888; }
+.add-btn {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #1E4D35; color: #fff;
+  border: none; cursor: pointer;
+  font-size: 16px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* BOTTOM NAV */
+.bnav {
+  display: flex; justify-content: space-around; align-items: center;
+  padding: 10px 0 8px;
+  background: #fff; border-top: 1px solid #D0E8D4;
+  position: fixed; bottom: 0; left: 0; width: 375px; z-index: 100;
+}
+.bnav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  cursor: pointer; color: #bbb; padding: 2px 10px;
+}
+.bnav-item.active { color: #1E4D35; }
+.bnav-item i { font-size: 22px; }
+.bnav-lbl { font-size: 9px; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-left">
+    <div class="nav-icon"><i class="ti ti-arrow-left"></i></div>
+    <span class="nav-brand">All Products</span>
+  </div>
+  <div class="nav-right">
+    <div class="nav-icon"><i class="ti ti-search"></i></div>
+    <div class="nav-icon"><i class="ti ti-adjustments-horizontal"></i></div>
+    <div class="toggle-pill"><div class="toggle-circle"></div></div>
+  </div>
+</div>
+
+<!-- SEARCH BAR -->
+<div class="search-bar">
+  <i class="ti ti-search"></i>
+  <input type="text" placeholder="Search products...">
+</div>
+
+<!-- FILTER CHIPS -->
+<div class="filter-row">
+  <button class="fchip on">All</button>
+  <button class="fchip">Sofa</button>
+  <button class="fchip">Chair</button>
+  <button class="fchip">Table</button>
+  <button class="fchip">Lamp</button>
+  <button class="fchip">Decor</button>
+  <button class="fchip">Mirror</button>
+</div>
+
+<div class="prod-count">Menampilkan 36 produk</div>
+
+<!-- PRODUCT GRID -->
+<div class="prod-grid">
+  <div class="prod-card"><div class="prod-img-area">🛋️</div><div class="prod-body"><div class="prod-name">Minimalist Sofa</div><div class="prod-price">Rp 4.200.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.8</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🪑</div><div class="prod-body"><div class="prod-name">Oak Dining Chair</div><div class="prod-price">Rp 1.850.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.9</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🏮</div><div class="prod-body"><div class="prod-name">Brass Floor Lamp</div><div class="prod-price">Rp 920.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.7</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🪴</div><div class="prod-body"><div class="prod-name">Ceramic Vase Set</div><div class="prod-price">Rp 285.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.6</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🛏️</div><div class="prod-body"><div class="prod-name">Platform Bed Frame</div><div class="prod-price">Rp 5.500.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.8</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🪞</div><div class="prod-body"><div class="prod-name">Arched Wall Mirror</div><div class="prod-price">Rp 750.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.5</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🧺</div><div class="prod-body"><div class="prod-name">Woven Rattan Tray</div><div class="prod-price">Rp 185.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.7</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🖼️</div><div class="prod-body"><div class="prod-name">Botanical Wall Art</div><div class="prod-price">Rp 320.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.6</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🕯️</div><div class="prod-body"><div class="prod-name">Soy Candle Set</div><div class="prod-price">Rp 145.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.9</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">☕</div><div class="prod-body"><div class="prod-name">Matte Coffee Table</div><div class="prod-price">Rp 2.100.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.8</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🌿</div><div class="prod-body"><div class="prod-name">Hanging Planter</div><div class="prod-price">Rp 95.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.4</span><button class="add-btn">+</button></div></div></div>
+  <div class="prod-card"><div class="prod-img-area">🛁</div><div class="prod-body"><div class="prod-name">Bamboo Shelf Unit</div><div class="prod-price">Rp 680.000</div><div class="prod-row"><span class="prod-star">&#9733; 4.6</span><button class="add-btn">+</button></div></div></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bnav">
+  <div class="bnav-item"><i class="ti ti-home"></i><span class="bnav-lbl">Home</span></div>
+  <div class="bnav-item"><i class="ti ti-message"></i><span class="bnav-lbl">Chat</span></div>
+  <div class="bnav-item active"><i class="ti ti-shopping-cart"></i><span class="bnav-lbl">Katalog</span></div>
+  <div class="bnav-item"><i class="ti ti-user"></i><span class="bnav-lbl">Profile</span></div>
+</div>
+
+</body>
+</html>
